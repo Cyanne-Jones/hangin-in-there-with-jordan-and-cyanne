@@ -9,6 +9,7 @@ var showPosterButton = document.querySelector(".make-poster");
 var urlInputBox = document.querySelector("#poster-image-url");
 var titleInputBox = document.querySelector("#poster-title");
 var quoteInputBox = document.querySelector("#poster-quote");
+var randomPosterButton = document.querySelector(".show-random");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -122,6 +123,7 @@ showPosterButton.addEventListener('click', function() {
 urlInputBox.addEventListener('input', updateImage);
 titleInputBox.addEventListener('input', updateTitle);
 quoteInputBox.addEventListener('input', updateQuote);
+randomPosterButton.addEventListener('click', showRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -173,3 +175,9 @@ function showPoster() {
   posterForm.className = "poster-form hidden"
   console.log(posterSection.innerHTML)
 };
+
+function showRandomPoster() {
+  randomizeImage();
+  randomizeTitle();
+  randomizeQuote();
+}
