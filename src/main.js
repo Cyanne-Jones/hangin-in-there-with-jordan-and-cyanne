@@ -12,6 +12,8 @@ var quoteInputBox = document.querySelector("#poster-quote");
 var randomPosterButton = document.querySelector(".show-random");
 var savedPosterButton = document.querySelector(".show-saved");
 var savedPosterSection = document.querySelector(".saved-posters");
+var backToMainButton = document.querySelector(".back-to-main");
+var nevermindButton = document.querySelector(".show-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -127,6 +129,8 @@ titleInputBox.addEventListener('input', updateTitle);
 quoteInputBox.addEventListener('input', updateQuote);
 randomPosterButton.addEventListener('click', showRandomPoster);
 savedPosterButton.addEventListener('click', showSavedPosters);
+backToMainButton.addEventListener('click', backToMain);
+nevermindButton.addEventListener('click', takeMeBack);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -159,23 +163,19 @@ function showCreationForm() {
 
 function updateImage() {
   posterImage.src = urlInputBox.value
-  console.log(posterImage.src)
 };
 
 function updateTitle() {
   titleText.innerText = titleInputBox.value;
-  console.log(titleText.innerText)
 };
 
 function updateQuote() {
   quoteText.innerText = quoteInputBox.value;
-  console.log(quoteText.innerText)
 };
 
 function showPoster() {
   posterSection.className = "main-poster shown"
   posterForm.className = "poster-form hidden"
-  console.log(posterSection.innerHTML)
 };
 
 function showRandomPoster() {
@@ -187,4 +187,14 @@ function showRandomPoster() {
 function showSavedPosters() {
   posterSection.className = "main-poster hidden";
   savedPosterSection.className = "saved-posters"
+}
+
+function backToMain() {
+  posterSection.className = "main-poster";
+  savedPosterSection.className = "saved-posters hidden";
+}
+
+function takeMeBack() {
+  posterForm.className = "poster-form hidden";
+  posterSection.className = "main-poster";
 }
