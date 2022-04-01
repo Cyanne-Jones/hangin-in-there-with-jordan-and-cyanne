@@ -10,6 +10,8 @@ var urlInputBox = document.querySelector("#poster-image-url");
 var titleInputBox = document.querySelector("#poster-title");
 var quoteInputBox = document.querySelector("#poster-quote");
 var randomPosterButton = document.querySelector(".show-random");
+var savedPosterButton = document.querySelector(".show-saved");
+var savedPosterSection = document.querySelector(".saved-posters");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,7 +126,7 @@ urlInputBox.addEventListener('input', updateImage);
 titleInputBox.addEventListener('input', updateTitle);
 quoteInputBox.addEventListener('input', updateQuote);
 randomPosterButton.addEventListener('click', showRandomPoster);
-
+savedPosterButton.addEventListener('click', showSavedPosters);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -180,4 +182,9 @@ function showRandomPoster() {
   randomizeImage();
   randomizeTitle();
   randomizeQuote();
+}
+
+function showSavedPosters() {
+  posterSection.className = "main-poster hidden";
+  savedPosterSection.className = "saved-posters"
 }
