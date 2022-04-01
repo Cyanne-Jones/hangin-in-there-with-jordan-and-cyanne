@@ -205,4 +205,10 @@ function takeMeBack() {
 
 function createPosterObject(imageURL, title, quote) {
   var createdPoster = new Poster(imageURL, title, quote);
+  images.push(createdPoster.imageURL)
+  titles.push(createdPoster.title)
+  quotes.push(createdPoster.quote)
+
+    console.log(images, titles, quotes);
+
 }
