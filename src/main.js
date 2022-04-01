@@ -2,6 +2,7 @@
 var posterImage = document.querySelector(".poster-img");
 var titleText = document.querySelector(".poster-title");
 var quoteText = document.querySelector(".poster-quote");
+var creationButton = document.querySelector(".show-form");
 
 
 // we've provided you with some data to work with 👇
@@ -107,26 +108,28 @@ var currentPoster;
 
 // event listeners go here 👇
 
+creationButton.addEventListener('click', showCreationForm);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+//randomie functionality
 function randomizeImage() {
   posterImage.src = images[getRandomIndex(images)];
 }
 randomizeImage();
-
 
 function randomizeTitle() {
   titleText.innerText = titles[getRandomIndex(titles)];
 }
 randomizeTitle();
 
-
 function randomeQuote() {
   quoteText.innerText = quotes[getRandomIndex(quotes)];
 }
 randomeQuote();
+
+// create poster functionality
