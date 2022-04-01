@@ -126,9 +126,6 @@ showPosterButton.addEventListener('click', function() {
   event.preventDefault();
   showPoster();
 });
-urlInputBox.addEventListener('input', updateImage);
-titleInputBox.addEventListener('input', updateTitle);
-quoteInputBox.addEventListener('input', updateQuote);
 
 randomPosterButton.addEventListener('click', showRandomPoster);
 savedPosterButton.addEventListener('click', showSavedPosters);
@@ -164,22 +161,15 @@ function showCreationForm() {
   posterForm.className = "poster-form shown";
 };
 
-function updateImage() {
-  posterImage.src = urlInputBox.value
-};
-
-function updateTitle() {
-  titleText.innerText = titleInputBox.value;
-};
-
-function updateQuote() {
-  quoteText.innerText = quoteInputBox.value;
-};
-
 function showPoster() {
+  event.preventDefault()
   posterSection.className = "main-poster shown"
   posterForm.className = "poster-form hidden"
-  createPosterObject(urlInputBox.value, titleInputBox.value, quoteInputBox.value);
+
+  var newPosterObject = createPosterObject(urlInputBox.value, titleInputBox.value, quoteInputBox.value)
+  quoteText.innerText = newPosterObject.quote
+  titleText.innerText = newPosterObject.title
+  posterImage.src = newPosterObject.imageURL;
 };
 
 function showRandomPoster() {
@@ -209,6 +199,6 @@ function createPosterObject(imageURL, title, quote) {
   titles.push(createdPoster.title)
   quotes.push(createdPoster.quote)
 
-    console.log(images, titles, quotes);
+  return createdPoster;
 
 }
