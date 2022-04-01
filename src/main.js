@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var posterImage = document.querySelector(".poster-img");
+var titleText = document.querySelector(".poster-title");
+var quoteText = document.querySelector(".poster-quote");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,3 +113,20 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+function randomizeImage() {
+  posterImage.src = images[getRandomIndex(images)];
+}
+randomizeImage();
+
+
+function randomizeTitle() {
+  titleText.innerText = titles[getRandomIndex(titles)];
+}
+randomizeTitle();
+
+
+function randomeQuote() {
+  quoteText.innerText = quotes[getRandomIndex(quotes)];
+}
+randomeQuote();
