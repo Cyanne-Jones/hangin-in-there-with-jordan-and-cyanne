@@ -2,7 +2,13 @@
 var posterImage = document.querySelector(".poster-img");
 var titleText = document.querySelector(".poster-title");
 var quoteText = document.querySelector(".poster-quote");
-
+var creationButton = document.querySelector(".show-form");
+var posterSection = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
+var showPosterButton = document.querySelector(".make-poster");
+var urlInputBox = document.querySelector("#poster-image-url");
+var titleInputBox = document.querySelector("#poster-title");
+var quoteInputBox = document.querySelector("#poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,7 +111,17 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
 // event listeners go here 👇
+
+creationButton.addEventListener('click', showCreationForm);
+showPosterButton.addEventListener('click', function() {
+  event.preventDefault();
+  showPoster();
+});
+urlInputBox.addEventListener('input', updateImage);
+titleInputBox.addEventListener('input', updateTitle);
+quoteInputBox.addEventListener('input', updateQuote);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -113,20 +129,47 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+//randomize functionality
 function randomizeImage() {
   posterImage.src = images[getRandomIndex(images)];
 }
 randomizeImage();
-
 
 function randomizeTitle() {
   titleText.innerText = titles[getRandomIndex(titles)];
 }
 randomizeTitle();
 
-
-function randomeQuote() {
+function randomizeQuote() {
   quoteText.innerText = quotes[getRandomIndex(quotes)];
 }
-randomeQuote();
+randomizeQuote();
+
+
+
+// create poster functionality
+function showCreationForm() {
+  posterSection.className = "main-poster hidden"
+  posterForm.className = "poster-form shown";
+};
+
+function updateImage() {
+  posterImage.src = urlInputBox.value
+  console.log(posterImage.src)
+};
+
+function updateTitle() {
+  titleText.innerText = titleInputBox.value;
+  console.log(titleText.innerText)
+};
+
+function updateQuote() {
+  quoteText.innerText = quoteInputBox.value;
+  console.log(quoteText.innerText)
+};
+
+function showPoster() {
+  posterSection.className = "main-poster shown"
+  posterForm.className = "poster-form hidden"
+  console.log(posterSection.innerHTML)
+};
