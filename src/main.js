@@ -15,6 +15,8 @@ var savedPosterSection = document.querySelector(".saved-posters");
 var backToMainButton = document.querySelector(".back-to-main");
 var nevermindButton = document.querySelector(".show-main");
 
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -127,6 +129,7 @@ showPosterButton.addEventListener('click', function() {
 urlInputBox.addEventListener('input', updateImage);
 titleInputBox.addEventListener('input', updateTitle);
 quoteInputBox.addEventListener('input', updateQuote);
+
 randomPosterButton.addEventListener('click', showRandomPoster);
 savedPosterButton.addEventListener('click', showSavedPosters);
 backToMainButton.addEventListener('click', backToMain);
@@ -176,6 +179,7 @@ function updateQuote() {
 function showPoster() {
   posterSection.className = "main-poster shown"
   posterForm.className = "poster-form hidden"
+  createPosterObject(urlInputBox.value, titleInputBox.value, quoteInputBox.value);
 };
 
 function showRandomPoster() {
@@ -186,7 +190,7 @@ function showRandomPoster() {
 
 function showSavedPosters() {
   posterSection.className = "main-poster hidden";
-  savedPosterSection.className = "saved-posters"
+  savedPosterSection.className = "saved-posters";
 }
 
 function backToMain() {
@@ -197,4 +201,8 @@ function backToMain() {
 function takeMeBack() {
   posterForm.className = "poster-form hidden";
   posterSection.className = "main-poster";
+}
+
+function createPosterObject(imageURL, title, quote) {
+  var createdPoster = new Poster(imageURL, title, quote);
 }
