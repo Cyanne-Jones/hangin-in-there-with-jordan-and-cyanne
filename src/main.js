@@ -3,6 +3,7 @@ var posterImage = document.querySelector(".poster-img");
 var titleText = document.querySelector(".poster-title");
 var quoteText = document.querySelector(".poster-quote");
 var creationButton = document.querySelector(".show-form");
+var mainPosterSection = document.querySelector(".poster");
 
 
 // we've provided you with some data to work with 👇
@@ -133,3 +134,6 @@ function randomeQuote() {
 randomeQuote();
 
 // create poster functionality
+function showCreationForm() {
+  mainPosterSection.className = "poster hidden";
+}
