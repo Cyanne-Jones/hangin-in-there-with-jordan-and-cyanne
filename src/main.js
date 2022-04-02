@@ -15,6 +15,7 @@ var savedPosterSection = document.querySelector(".saved-posters");
 var backToMainButton = document.querySelector(".back-to-main");
 var nevermindButton = document.querySelector(".show-main");
 
+//var saveNewPosterButton = document.querySelector(".save-poster");
 
 
 // we've provided you with some data to work with 👇
@@ -131,6 +132,7 @@ randomPosterButton.addEventListener('click', showRandomPoster);
 savedPosterButton.addEventListener('click', showSavedPosters);
 backToMainButton.addEventListener('click', backToMain);
 nevermindButton.addEventListener('click', takeMeBack);
+saveNewPosterButton.addEventListener('click', savePoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -202,3 +204,9 @@ function createPosterObject(imageURL, title, quote) {
   return createdPoster;
 
 }
+
+// function savePoster() {
+//   var newSavedPoster = new Poster(posterImage.src, titleText.innerText, quoteText.innerText);
+//   savedPosters.push(newSavedPoster);
+//   console.log(savedPosters);
+// }
