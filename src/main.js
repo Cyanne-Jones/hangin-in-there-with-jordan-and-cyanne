@@ -16,10 +16,6 @@ var backToMainButton = document.querySelector(".back-to-main");
 var nevermindButton = document.querySelector(".show-main");
 var showSavedViewButton = document.querySelector(".show-saved");
 var savedPosterGrid = document.querySelector(".saved-posters-grid");
-//var miniPosterButton = document.querySelector(".mini-poster");
-
-
-
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -122,23 +118,18 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-
 // event listeners go here 👇
-
 creationButton.addEventListener('click', showCreationForm);
 showPosterButton.addEventListener('click', function() {
   event.preventDefault();
   showPoster();
 });
-
 randomPosterButton.addEventListener('click', showRandomPoster);
 savePosterButton.addEventListener('click', savePoster);
 backToMainButton.addEventListener('click', backToMain);
 nevermindButton.addEventListener('click', takeMeBack);
 showSavedViewButton.addEventListener('click', showSavedPosters);
 savedPosterSection.addEventListener('dblclick', spliceDeletedPoster);
-//posterImage.addEventListener('dblclick', consoleLog);
-//miniPosterButton.addEventListener('dblclick', consoleLog);
 
 
 // functions and event handlers go here 👇
@@ -164,8 +155,6 @@ function randomizeQuote() {
 }
 randomizeQuote();
 
-
-
 // create poster functionality
 function showCreationForm() {
   posterSection.className = "main-poster hidden"
@@ -189,6 +178,7 @@ function showRandomPoster() {
   randomizeQuote();
 }
 
+//buttons functionality
 function showSavedPosters() {
   posterSection.className = "main-poster hidden";
   savedPosterSection.className = "saved-posters";
@@ -224,15 +214,7 @@ function savePoster() {
     if (posterExists === 0) {
       savedPosters.push(newSavedPoster);
     }
-  }
-
-// function savePoster() {
-//   new Poster(currentPoster.imageURL, currentPoster.title, currentPoster.quote)
-//   if (!savedPosters.includes(currentPoster)) {
-//     savedPosters.push(currentPoster)
-//   }
-// }
-
+};
 
 function displaySavedPosters() {
   var storeValue = []
