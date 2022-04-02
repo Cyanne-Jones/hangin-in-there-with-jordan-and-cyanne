@@ -16,6 +16,9 @@ var backToMainButton = document.querySelector(".back-to-main");
 var nevermindButton = document.querySelector(".show-main");
 var showSavedViewButton = document.querySelector(".show-saved");
 var savedPosterGrid = document.querySelector(".saved-posters-grid");
+//var miniPosterButton = document.querySelector(".mini-poster");
+
+
 
 
 // we've provided you with some data to work with 👇
@@ -77,7 +80,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don't downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -104,7 +107,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -133,6 +136,10 @@ savePosterButton.addEventListener('click', savePoster);
 backToMainButton.addEventListener('click', backToMain);
 nevermindButton.addEventListener('click', takeMeBack);
 showSavedViewButton.addEventListener('click', showSavedPosters);
+savedPosterSection.addEventListener('dblclick', spliceDeletedPoster);
+//posterImage.addEventListener('dblclick', consoleLog);
+//miniPosterButton.addEventListener('dblclick', consoleLog);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -141,6 +148,7 @@ function getRandomIndex(array) {
 }
 
 //randomize functionality
+
 function randomizeImage() {
   posterImage.src = images[getRandomIndex(images)];
 }
@@ -184,7 +192,7 @@ function showRandomPoster() {
 function showSavedPosters() {
   posterSection.className = "main-poster hidden";
   savedPosterSection.className = "saved-posters";
-    displaySavedPosters();
+  displaySavedPosters();
 }
 
 function backToMain() {
@@ -202,7 +210,7 @@ function createPosterObject(imageURL, title, quote) {
   images.push(createdPoster.imageURL)
   titles.push(createdPoster.title)
   quotes.push(createdPoster.quote)
-  return createdPoster;
+  return createdPoster
 }
 
 function savePoster() {
@@ -218,9 +226,32 @@ function savePoster() {
     }
   }
 
+// function savePoster() {
+//   new Poster(currentPoster.imageURL, currentPoster.title, currentPoster.quote)
+//   if (!savedPosters.includes(currentPoster)) {
+//     savedPosters.push(currentPoster)
+//   }
+// }
+
 
 function displaySavedPosters() {
+  var storeValue = []
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterGrid.innerHTML += `<section class="mini-poster"><img class ="poster-img" src="${savedPosters[i].imageURL}"> <h2 class="poster-title">${savedPosters[i].title}</h2><h4 class="poster-quote">${savedPosters[i].quote}</h4></section>`
+    storeValue += `<div class="mini-poster" id="${savedPosters[i].id}"><img class="poster-img" id="${savedPosters[i].id}" src="${savedPosters[i].imageURL}"> <h2 class="poster-title">${savedPosters[i].title}</h2><h4 class="poster-quote">${savedPosters[i].quote}</h4></div>`
+    savedPosterGrid.innerHTML = storeValue
   }
 }
+
+function getIndexOfPoster(id) {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (id === savedPosters[i].id) {
+      return i
+    }
+  }
+};
+
+function spliceDeletedPoster(event) {
+    savedPosters.splice(getIndexOfPoster(parseInt(event.target.id)), 1);
+    savedPosterSection.className = "saved-posters hidden";
+    savedPosterSection.className = "saved-posters";
+};
