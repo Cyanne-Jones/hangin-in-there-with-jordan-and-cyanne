@@ -17,11 +17,7 @@ var nevermindButton = document.querySelector(".show-main");
 var showSavedViewButton = document.querySelector(".show-saved");
 var savedPosterGrid = document.querySelector(".saved-posters-grid");
 
-function displaySavedPosters() {
-  for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterGrid.innerHTML += `<section class="mini-poster"><img class ="poster-img" src="${savedPosters[i].imageURL}"> <h2 class="poster-title">${savedPosters[i].title}</h2><h4 class="poster-quote">${savedPosters[i].quote}</h4></section>`
-  }
-}
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -138,7 +134,6 @@ backToMainButton.addEventListener('click', backToMain);
 nevermindButton.addEventListener('click', takeMeBack);
 showSavedViewButton.addEventListener('click', showSavedPosters);
 
-
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -213,3 +208,10 @@ function createPosterObject(imageURL, title, quote) {
 function savePoster() {
   var newSavedPoster = new Poster(posterImage.src, titleText.innerText, quoteText.innerText);
   savedPosters.push(newSavedPoster);
+}
+
+function displaySavedPosters() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosterGrid.innerHTML += `<section class="mini-poster"><img class ="poster-img" src="${savedPosters[i].imageURL}"> <h2 class="poster-title">${savedPosters[i].title}</h2><h4 class="poster-quote">${savedPosters[i].quote}</h4></section>`
+  }
+}
