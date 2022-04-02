@@ -252,6 +252,5 @@ function getIndexOfPoster(id) {
 
 function spliceDeletedPoster(event) {
     savedPosters.splice(getIndexOfPoster(parseInt(event.target.id)), 1);
-    savedPosterSection.className = "saved-posters hidden";
-    savedPosterSection.className = "saved-posters";
+    displaySavedPosters()
 };
