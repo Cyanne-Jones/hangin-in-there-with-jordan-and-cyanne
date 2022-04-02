@@ -207,8 +207,17 @@ function createPosterObject(imageURL, title, quote) {
 
 function savePoster() {
   var newSavedPoster = new Poster(posterImage.src, titleText.innerText, quoteText.innerText);
-  savedPosters.push(newSavedPoster);
-}
+  var posterExists = 0;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if ((newSavedPoster.imageURL === savedPosters[i].imageURL) && (newSavedPoster.title === savedPosters[i].title) && (newSavedPoster.quote === savedPosters[i].quote)) {
+      posterExists++;
+    }
+  }
+    if (posterExists === 0) {
+      savedPosters.push(newSavedPoster);
+    }
+  }
+
 
 function displaySavedPosters() {
   for (var i = 0; i < savedPosters.length; i++) {
