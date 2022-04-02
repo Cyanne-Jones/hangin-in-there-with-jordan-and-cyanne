@@ -10,13 +10,28 @@ var urlInputBox = document.querySelector("#poster-image-url");
 var titleInputBox = document.querySelector("#poster-title");
 var quoteInputBox = document.querySelector("#poster-quote");
 var randomPosterButton = document.querySelector(".show-random");
-var savedPosterButton = document.querySelector(".show-saved");
+var savePosterButton = document.querySelector(".save-poster");
 var savedPosterSection = document.querySelector(".saved-posters");
 var backToMainButton = document.querySelector(".back-to-main");
 var nevermindButton = document.querySelector(".show-main");
+var showSavedViewButton = document.querySelector(".show-saved");
 
+var savedPosterGrid = document.querySelector(".saved-posters-grid");
 
+//var puppyBoi = new Poster("https://d17fnq9dkz9hgj.cloudfront.net/uploads/2020/04/shelter-dog-cropped-1.jpg", "I'm a puppy", "A REAL dog!" );
 
+//savedPosterGrid.innerHTML = `<article class="poster"><img class="poster-img" src="${puppyBoi.imageURL}" alt="puppy"><h1 class="poster-title">${puppyBoi.title}</h1><h3 class="poster-quote">${puppyBoi.Quote}</h3></article>`
+
+//savedPosters[i].imageURL, savedPosters[i].title, savedPosters[i].quote
+
+function displaySavedPosters() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosterGrid.innerHTML += `<section class="mini-poster"><img class ="poster-img" src="${savedPosters[i].imageURL}"> <h2 class="poster-title">${savedPosters[i].title}</h2><h4 class="poster-quote">${savedPosters[i].quote}</h4></section>`
+  }
+  console.log(savedPosters);
+  //console.log(savedPosterGrid);
+}
+  console.log(savedPosterGrid);
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -128,9 +143,11 @@ showPosterButton.addEventListener('click', function() {
 });
 
 randomPosterButton.addEventListener('click', showRandomPoster);
-savedPosterButton.addEventListener('click', showSavedPosters);
+savePosterButton.addEventListener('click', savePoster);
 backToMainButton.addEventListener('click', backToMain);
 nevermindButton.addEventListener('click', takeMeBack);
+showSavedViewButton.addEventListener('click', showSavedPosters);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -181,6 +198,7 @@ function showRandomPoster() {
 function showSavedPosters() {
   posterSection.className = "main-poster hidden";
   savedPosterSection.className = "saved-posters";
+    displaySavedPosters();
 }
 
 function backToMain() {
@@ -201,4 +219,9 @@ function createPosterObject(imageURL, title, quote) {
 
   return createdPoster;
 
+}
+
+function savePoster() {
+  var newSavedPoster = new Poster(posterImage.src, titleText.innerText, quoteText.innerText);
+  savedPosters.push(newSavedPoster);
 }
