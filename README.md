@@ -19,5 +19,7 @@ As second week conquerers of Mod 1/Week 2, we are extremely proud of this page a
 3. CSS  
 
 Please visit our GitHub's at:
+<br></br>
 [Jordan Farelli](https://github.com/jfarelli)
+
 [Cyanne Jones](https://github.com/Cyanne-Jones)
