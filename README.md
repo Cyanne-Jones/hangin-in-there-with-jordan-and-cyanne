@@ -2,7 +2,7 @@
 
 A motivational repo, by **Cyanne Jones** & **Jordan Farelli**.
 
-As second week conquerers of Mod 1 in Front End Program at [Turing](https://turing.edu/), we are extremely proud of this page and what it provides to you!
+As second week conquerers of Mod 1 in the Front End Program at [Turing](https://turing.edu/), we are extremely proud of this page and what it provides to you!
 
 ## GET INSPIRED!!!
 
